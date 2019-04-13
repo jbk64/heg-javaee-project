@@ -2,9 +2,12 @@ package barker.ch.products;
 
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+@Singleton
 public class ProductService {
 
     Logger log = Logger.getLogger(ProductService.class.getName());
@@ -18,7 +21,7 @@ public class ProductService {
         productDao.save(product);
     }
 
-    public List<Product> getAllProducts() {
+    public ArrayList<Product> getAllProducts() {
         return productDao.getProducts();
     }
 }

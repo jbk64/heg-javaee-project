@@ -1,7 +1,5 @@
 package barker.ch.products;
 
-import javax.ejb.Stateful;
-import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +22,7 @@ public class ProductDao {
         log.info("Product saved.");
     }
 
-    List getProducts() {
+    ArrayList<Product> getProducts() {
         return new ArrayList<>(products.values());
     }
 }
