@@ -1,4 +1,4 @@
-package barker.ch.servlets;
+package barker.ch.core;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +12,6 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }
 }
