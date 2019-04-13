@@ -19,11 +19,11 @@ public class LoadDatabaseListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        log.info("Servlet context initialized");
+        log.info("Servlet context initialized.");
         productService.addProduct(new Product(1L, "Product A", "Description A"));
         productService.addProduct(new Product(2L, "Product B", "Description B"));
         productService.addProduct(new Product(3L, "Product C", "Description C"));
-        log.info(productService.getAllProducts().size() + "");
+        log.info("Products loaded.");
     }
 
     @Override
