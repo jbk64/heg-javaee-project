@@ -1,18 +1,15 @@
 package barker.ch.products;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
 public class Product {
 
-    @Id @GeneratedValue
     private Long id;
     private String name;
     private String description;
 
-    public Product(String name, String description) {
+    public Product() {}
+
+    public Product(Long id, String name, String description) {
+        this.id = id;
         this.name = name;
         this.description = description;
     }
@@ -39,5 +36,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

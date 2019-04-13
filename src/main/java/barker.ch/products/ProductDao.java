@@ -1,39 +1,30 @@
 package barker.ch.products;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.ejb.Stateful;
+import javax.ejb.Stateless;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 public class ProductDao {
 
     private Logger log = Logger.getLogger(ProductDao.class.getName());
-
-    private EntityManager manager;
+    private Map<Long, Product> products = new HashMap<>();
 
     public ProductDao() {}
 
-    public ProductDao(EntityManager manager) {
-        this.manager = manager;
-    }
-
     Product findById(Long id) {
-        return manager.find(Product.class, id);
+        return products.get(id);
     }
 
     void save(Product product) {
-        manager.getTransaction().begin();
-        manager.persist(product);
-        manager.getTransaction().commit();
+        products.put(product.getId(), product);
+        log.info("Product saved.");
     }
 
-    @SuppressWarnings("JpaQlInspection")
     List getProducts() {
-        Query query = manager.createQuery("select p from Product p", Product.class);
-        return query.getResultList();
-    }
-
-    void test() {
-        log.info("Hello from ProductDao.");
+        return new ArrayList<>(products.values());
     }
 }

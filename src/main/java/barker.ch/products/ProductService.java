@@ -2,6 +2,7 @@ package barker.ch.products;
 
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class ProductService {
@@ -13,8 +14,11 @@ public class ProductService {
 
     public ProductService() {}
 
-    public void test() {
-        log.info("Hello from ProductService.");
-        productDao.test();
+    public void addProduct(Product product) {
+        productDao.save(product);
+    }
+
+    public List<Product> getAllProducts() {
+        return productDao.getProducts();
     }
 }
