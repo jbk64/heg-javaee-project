@@ -20,21 +20,39 @@ public class LoadDatabaseListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         log.info("Servlet context initialized.");
-        productService.addProduct(new Product(1L, "Product A", "Description A"));
-        productService.addProduct(new Product(2L, "Product B", "Description B"));
-        productService.addProduct(new Product(3L, "Product C", "Description C"));
-        productService.addProduct(new Product(4L, "Product D", "Description D"));
-        productService.addProduct(new Product(5L, "Product E", "Description E"));
-        productService.addProduct(new Product(7L, "Product F", "Description F"));
-        productService.addProduct(new Product(8L, "Product G", "Description G"));
-        productService.addProduct(new Product(9L, "Product H", "Description H"));
-        productService.addProduct(new Product(10L, "Product I", "Description I"));
+        loadProducts();
+        checkProducts();
         log.info("Products loaded.");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         log.info("Servlet context destroyed");
+    }
+
+    private void loadProducts() {
+        try {
+            productService.addProduct(new Product("Product A", "Description A"));
+            productService.addProduct(new Product("Product B", "Description B"));
+            productService.addProduct(new Product("Product C", "Description C"));
+            productService.addProduct(new Product("Product D", "Description D"));
+            productService.addProduct(new Product("Product E", "Description E"));
+            productService.addProduct(new Product("Product F", "Description F"));
+            productService.addProduct(new Product("Product G", "Description G"));
+            productService.addProduct(new Product("Product H", "Description H"));
+            productService.addProduct(new Product("Product I", "Description I"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void checkProducts() {
+        try {
+            Product product = productService.getProduct(1L);
+            log.info(product.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -25,7 +25,7 @@ public class ProductService {
         return productDao.findById(id);
     }
 
-    public ArrayList<Product> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productDao.getAll();
     }
 

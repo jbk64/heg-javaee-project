@@ -1,4 +1,4 @@
-package barker.ch.core;
+package barker.ch.servlets;
 
 import barker.ch.products.ProductService;
 
@@ -11,19 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-@WebServlet("/catalog")
-public class ProductListServlet extends HttpServlet {
+@WebServlet("")
+public class MainServlet extends HttpServlet {
 
-    private Logger log = Logger.getLogger(ProductListServlet.class.getName());
+    Logger log = Logger.getLogger(MainServlet.class.getName());
 
     @Inject
     private ProductService productService;
-    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("products", productService.getAllProducts());
         req.setAttribute("cartSize", productService.getCartSize());
-        getServletContext().getRequestDispatcher("/WEB-INF/jsp/product-list.jsp").forward(req, resp);
-
+        req.setAttribute("products", productService.getFrontpageProducts());
+        getServletContext().getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }
 }

@@ -1,4 +1,4 @@
-package barker.ch.core;
+package barker.ch.servlets;
 
 import barker.ch.products.ProductService;
 
