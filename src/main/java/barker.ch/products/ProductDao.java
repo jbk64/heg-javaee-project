@@ -23,7 +23,20 @@ public class ProductDao {
         products.put(product.getId(), product);
     }
 
-    ArrayList<Product> getProducts() {
+    ArrayList<Product> getAll() {
         return new ArrayList<>(products.values());
+    }
+
+    int getCartSize() {
+        return getCartProducts().size();
+    }
+
+    ArrayList<Product> getCartProducts() {
+        ArrayList<Product> cartProducts = new ArrayList<>();
+        cartProducts.add(products.get(2L));
+        cartProducts.add(products.get(5L));
+        cartProducts.add(products.get(8L));
+        cartProducts.add(products.get(3L));
+        return cartProducts;
     }
 }

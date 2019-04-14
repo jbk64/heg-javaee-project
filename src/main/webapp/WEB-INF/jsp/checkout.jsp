@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="../../ressources/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../ressources/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
 </head>
 <body>
 
@@ -18,16 +17,27 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-6">
-            <h1>${product.name}</h1>
-            <p>${product.description}</p>
-            <form action="${pageContext.request.contextPath}/product" method="post">
-                <input type="hidden" name="id" value="${product.id}" />
-                <button type="submit" class="btn btn-success">Add to cart <i class="fas fa-shopping-cart"></i></button>
-            </form>
+        <div class="col-12">
+            <h1>Your cart</h1>
         </div>
-        <div class="col-12 col-md-6">
-            <img src="https://dummyimage.com/450x300" class="img-fluid float-right" alt="">
+        <br>
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr class="table-secondary">
+                    <th scope="col">Product</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="product" items="${cartProducts}">
+                    <tr>
+                        <td>${product.name}</td>
+                        <td>1</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

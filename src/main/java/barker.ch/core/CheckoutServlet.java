@@ -1,6 +1,5 @@
 package barker.ch.core;
 
-import barker.ch.products.Product;
 import barker.ch.products.ProductService;
 
 import javax.inject.Inject;
@@ -12,18 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-@WebServlet("")
-public class MainServlet extends HttpServlet {
+@WebServlet("/checkout")
+public class CheckoutServlet extends HttpServlet {
 
-    Logger log = Logger.getLogger(MainServlet.class.getName());
+    private Logger log = Logger.getLogger(CheckoutServlet.class.getName());
 
     @Inject
     private ProductService productService;
-
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("cartSize", productService.getCartSize());
-        req.setAttribute("products", productService.getFrontpageProducts());
-        getServletContext().getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
+        req.setAttribute("cartProducts", productService.getCartProducts());
+        getServletContext().getRequestDispatcher("/WEB-INF/jsp/checkout.jsp").forward(req, resp);
     }
 }
