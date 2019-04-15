@@ -3,6 +3,7 @@ package barker.ch.products;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -37,11 +38,18 @@ public class ProductService {
         return products;
     }
 
-    public int getCartSize() {
-        return productDao.getCartSize();
+    public int getCartSize(HttpServletRequest req) {
+        ShoppingCart shoppingCart = (ShoppingCart) req.getSession().getAttribute("shoppingCart");
+        if (shoppingCart == null) {
+            return 0;
+        }
+        return shoppingCart.getCartSize();
     }
 
-    public ArrayList<Product> getCartProducts() {
-        return productDao.getCartProducts();
+    public ShoppingCart getShoppingCart(HttpServletRequest req) {
+        if (req.getSession().getAttribute("shoppingCart") == null) {
+            req.getSession().setAttribute("shoppingCart", new ShoppingCart());
+        }
+        return (ShoppingCart)req.getSession().getAttribute("shoppingCart");
     }
 }

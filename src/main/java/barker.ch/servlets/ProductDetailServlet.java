@@ -23,14 +23,7 @@ public class ProductDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.parseLong(req.getParameter("id"));
         req.setAttribute("product", productService.getProduct(id));
-        req.setAttribute("cartSize", productService.getCartSize());
+        req.setAttribute("cartSize", productService.getCartSize(req));
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/product-detail.jsp").forward(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long id = Long.parseLong(req.getParameter("id"));
-        log.info("Adding product " + id + " to the cart.");
-        resp.sendRedirect("/checkout");
     }
 }

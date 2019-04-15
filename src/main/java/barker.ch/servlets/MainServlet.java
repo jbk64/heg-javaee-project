@@ -21,7 +21,7 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("cartSize", productService.getCartSize());
+        req.setAttribute("cartSize", productService.getCartSize(req));
         req.setAttribute("products", productService.getFrontpageProducts());
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }

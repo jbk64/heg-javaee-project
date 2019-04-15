@@ -9,3 +9,7 @@
 html {
     overflow-y: scroll;
 }
+
+.button-form {
+    display: inline-block;
+}
