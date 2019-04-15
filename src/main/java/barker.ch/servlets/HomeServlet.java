@@ -1,6 +1,6 @@
 package barker.ch.servlets;
 
-import barker.ch.products.ProductService;
+import barker.ch.services.ProductService;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 @WebServlet("")
-public class MainServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 
-    Logger log = Logger.getLogger(MainServlet.class.getName());
+    Logger log = Logger.getLogger(HomeServlet.class.getName());
 
     @Inject
     private ProductService productService;

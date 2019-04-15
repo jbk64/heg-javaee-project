@@ -1,4 +1,4 @@
-package barker.ch.products;
+package barker.ch.models;
 
 import java.util.HashMap;
 

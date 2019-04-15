@@ -1,5 +1,9 @@
-package barker.ch.products;
+package barker.ch.services;
 
+
+import barker.ch.dao.ProductDao;
+import barker.ch.models.Product;
+import barker.ch.models.ShoppingCart;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -30,6 +34,7 @@ public class ProductService {
         return productDao.getAll();
     }
 
+    // TODO: change this
     public ArrayList<Product> getFrontpageProducts() {
         ArrayList<Product> products = new ArrayList<>();
         products.add(productDao.findById(1L));
@@ -51,5 +56,9 @@ public class ProductService {
             req.getSession().setAttribute("shoppingCart", new ShoppingCart());
         }
         return (ShoppingCart)req.getSession().getAttribute("shoppingCart");
+    }
+
+    public void emptyCart(HttpServletRequest req) {
+        req.getSession().removeAttribute("shoppingCart");
     }
 }

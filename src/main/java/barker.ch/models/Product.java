@@ -1,4 +1,4 @@
-package barker.ch.products;
+package barker.ch.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,12 +12,14 @@ public class Product {
     private Long id;
     private String name;
     private String description;
+    private double price;
 
     public Product() {}
 
-    public Product(String name, String description) {
+    public Product(String name, String description, double price) {
         this.name = name;
         this.description = description;
+        this.price = price;
     }
 
     public Long getId() {
@@ -44,12 +46,21 @@ public class Product {
         this.description = description;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", price=" + price +
                 '}';
     }
 

@@ -1,8 +1,8 @@
 package barker.ch.servlets;
 
-import barker.ch.products.Product;
-import barker.ch.products.ProductService;
-import barker.ch.products.ShoppingCart;
+import barker.ch.models.Product;
+import barker.ch.services.ProductService;
+import barker.ch.models.ShoppingCart;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;

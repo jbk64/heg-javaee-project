@@ -29,7 +29,9 @@
                 <tr class="table-secondary">
                     <th scope="col">ID</th>
                     <th scope="col">Product</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,6 +39,7 @@
                     <tr>
                         <td>${shoppingCartItem.key.id}</td>
                         <td>${shoppingCartItem.key.name}</td>
+                        <td>${shoppingCartItem.key.price}</td>
                         <td>
                             ${shoppingCartItem.value}
                             <form action="${pageContext.request.contextPath}/addItem" method="post" class="button-form">
@@ -48,10 +51,12 @@
                                 <button type="submit" class="btn btn-sm btn-danger">&minus;</button>
                             </form>
                         </td>
+                        <td>${shoppingCartItem.key.price * shoppingCartItem.value}</td>
                     </tr>
                     </c:forEach>
                 </tbody>
             </table>
+            <p>Your total: XXX</p>
             <br>
             <form action="${pageContext.request.contextPath}/checkout" method="post" class="button-form">
                 <button type="submit" class="btn btn-success">Checkout</button>

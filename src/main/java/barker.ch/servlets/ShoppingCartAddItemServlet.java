@@ -1,6 +1,6 @@
 package barker.ch.servlets;
 
-import barker.ch.products.Product;
+import barker.ch.models.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

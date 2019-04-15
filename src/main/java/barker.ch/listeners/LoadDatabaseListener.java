@@ -1,7 +1,7 @@
-package barker.ch.core;
+package barker.ch.listeners;
 
-import barker.ch.products.Product;
-import barker.ch.products.ProductService;
+import barker.ch.models.Product;
+import barker.ch.services.ProductService;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
@@ -32,15 +32,15 @@ public class LoadDatabaseListener implements ServletContextListener {
 
     private void loadProducts() {
         try {
-            productService.addProduct(new Product("Product A", "Description A"));
-            productService.addProduct(new Product("Product B", "Description B"));
-            productService.addProduct(new Product("Product C", "Description C"));
-            productService.addProduct(new Product("Product D", "Description D"));
-            productService.addProduct(new Product("Product E", "Description E"));
-            productService.addProduct(new Product("Product F", "Description F"));
-            productService.addProduct(new Product("Product G", "Description G"));
-            productService.addProduct(new Product("Product H", "Description H"));
-            productService.addProduct(new Product("Product I", "Description I"));
+            productService.addProduct(new Product("Product A", "Description A", 99.90));
+            productService.addProduct(new Product("Product B", "Description B", 114.90));
+            productService.addProduct(new Product("Product C", "Description C", 99.90));
+            productService.addProduct(new Product("Product D", "Description D", 49.90));
+            productService.addProduct(new Product("Product E", "Description E", 199.90));
+            productService.addProduct(new Product("Product F", "Description F", 299.90));
+            productService.addProduct(new Product("Product G", "Description G", 14.90));
+            productService.addProduct(new Product("Product H", "Description H", 44.90));
+            productService.addProduct(new Product("Product I", "Description I", 99.90));
         } catch (Exception e) {
             e.printStackTrace();
         }

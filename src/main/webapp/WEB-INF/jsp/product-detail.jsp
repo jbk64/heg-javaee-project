@@ -21,6 +21,7 @@
         <div class="col-12 col-md-6">
             <h2>${product.name}</h2>
             <p>${product.description}</p>
+            <p>${product.price}</p>
             <form action="${pageContext.request.contextPath}/addItem" method="post">
                 <input type="hidden" name="productId" value="${product.id}" />
                 <button type="submit" class="btn btn-success">Add to cart <i class="fas fa-shopping-cart"></i></button>

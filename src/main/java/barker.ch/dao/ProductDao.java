@@ -1,6 +1,8 @@
-package barker.ch.products;
+package barker.ch.dao;
 
-import javax.inject.Inject;
+import barker.ch.models.Product;
+import barker.ch.products.ProductNotFoundException;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +20,7 @@ public class ProductDao {
 
     public ProductDao() {}
 
-    Product findById(Long id) {
+    public Product findById(Long id) {
         EntityManager em = getEntityManager();
         Product product = em.find(Product.class, id);
         if(product == null) {
@@ -27,23 +29,23 @@ public class ProductDao {
         return product;
     }
 
-    void save(Product product) {
+    public void save(Product product) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         em.persist(product);
         em.getTransaction().commit();
     }
 
-    List<Product> getAll() {
+    public List<Product> getAll() {
         EntityManager em = getEntityManager();
         return em.createQuery("SELECT p from Product p", Product.class).getResultList();
     }
 
-    int getCartSize() {
+    public int getCartSize() {
         return getCartProducts().size();
     }
 
-    ArrayList<Product> getCartProducts() {
+    public ArrayList<Product> getCartProducts() {
         ArrayList<Product> cartProducts = new ArrayList<>();
         cartProducts.add(products.get(2L));
         cartProducts.add(products.get(5L));
