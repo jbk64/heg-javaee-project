@@ -1,6 +1,6 @@
 package barker.ch.servlets;
 
-import barker.ch.services.ProductService;
+import barker.ch.products.ProductService;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -18,7 +18,13 @@ public class CheckoutServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        productService.emptyCart(req);
-        resp.sendRedirect("cart");
+        resp.sendRedirect("checkout");
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("totalCost", productService.getTotalCost(req));
+        req.setAttribute("cartSize", productService.getCartSize(req));
+        getServletContext().getRequestDispatcher("/WEB-INF/jsp/checkout.jsp").forward(req, resp);
     }
 }

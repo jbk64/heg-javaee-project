@@ -1,4 +1,4 @@
-package barker.ch.models;
+package barker.ch.products;
 
 import java.util.HashMap;
 
@@ -33,5 +33,15 @@ public class ShoppingCart {
 
     public int getCartSize() {
         return content.values().stream().mapToInt(Integer::intValue).sum();
+    }
+
+    public double getTotalCost() {
+        return content.keySet().stream()
+                .mapToDouble(p -> p.getPrice() * content.get(p)).sum();
+
+    }
+
+    public void removeProduct(Product product) {
+        this.content.remove(product);
     }
 }

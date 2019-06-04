@@ -1,8 +1,6 @@
-package barker.ch.models;
+package barker.ch.products;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -10,16 +8,19 @@ public class Product {
 
     @Id @GeneratedValue
     private Long id;
+    @Column(unique = true)
     private String name;
     private String description;
     private double price;
+    private boolean onFrontPage;
 
     public Product() {}
 
-    public Product(String name, String description, double price) {
+    public Product(String name, String description, double price, boolean onFrontPage) {
         this.name = name;
         this.description = description;
         this.price = price;
+        this.onFrontPage = onFrontPage;
     }
 
     public Long getId() {
@@ -54,6 +55,14 @@ public class Product {
         this.price = price;
     }
 
+    public boolean isOnFrontPage() {
+        return onFrontPage;
+    }
+
+    public void setOnFrontPage(boolean frontPage) {
+        this.onFrontPage = frontPage;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -61,6 +70,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", onFrontPage=" + onFrontPage +
                 '}';
     }
 

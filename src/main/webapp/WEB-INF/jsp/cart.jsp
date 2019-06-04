@@ -42,13 +42,17 @@
                         <td>${shoppingCartItem.key.price}</td>
                         <td>
                             ${shoppingCartItem.value}
+                            <form action="${pageContext.request.contextPath}/substractItem" method="post" class="button-form">
+                                <input type="hidden" name="productId" value="${shoppingCartItem.key.id}">
+                                <button type="submit" class="btn btn-sm btn-light">&minus;</button>
+                            </form>
                             <form action="${pageContext.request.contextPath}/addItem" method="post" class="button-form">
                                 <input type="hidden" name="productId" value="${shoppingCartItem.key.id}">
-                                <button type="submit" class="btn btn-sm btn-success">&plus;</button>
+                                <button type="submit" class="btn btn-sm btn-light">&plus;</button>
                             </form>
                             <form action="${pageContext.request.contextPath}/removeItem" method="post" class="button-form">
                                 <input type="hidden" name="productId" value="${shoppingCartItem.key.id}">
-                                <button type="submit" class="btn btn-sm btn-danger">&minus;</button>
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                             </form>
                         </td>
                         <td>${shoppingCartItem.key.price * shoppingCartItem.value}</td>
@@ -56,16 +60,19 @@
                     </c:forEach>
                 </tbody>
             </table>
-            <p>Your total: XXX</p>
+            <p>Your total: ${totalCost}</p>
             <br>
             <form action="${pageContext.request.contextPath}/checkout" method="post" class="button-form">
-                <button type="submit" class="btn btn-success">Checkout</button>
+                <button type="submit" class="btn btn-success">Pay</button>
             </form>
             </c:when>
             <c:otherwise>
             <p>Nothing here</p>
             </c:otherwise>
             </c:choose>
+            <br>
+            <br>
+            <a href="${pageContext.request.contextPath}/catalog">Back to shopping</a>
         </div>
     </div>
 </div>

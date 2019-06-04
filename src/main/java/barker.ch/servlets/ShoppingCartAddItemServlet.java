@@ -1,6 +1,6 @@
 package barker.ch.servlets;
 
-import barker.ch.models.Product;
+import barker.ch.products.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,7 @@ public class ShoppingCartAddItemServlet extends ShoppingCartServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         handleAction(req);
-        super.doPost(req, resp);
+        super.doGet(req, resp);
     }
 
     private void handleAction(HttpServletRequest req) {

@@ -1,6 +1,6 @@
 package barker.ch.servlets;
 
-import barker.ch.services.ProductService;
+import barker.ch.products.ProductService;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;

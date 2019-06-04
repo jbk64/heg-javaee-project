@@ -1,9 +1,9 @@
-package barker.ch.dao;
-
-import barker.ch.models.Product;
-import barker.ch.products.ProductNotFoundException;
+package barker.ch.products;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,13 +45,24 @@ public class ProductDao {
         return getCartProducts().size();
     }
 
-    public ArrayList<Product> getCartProducts() {
+    public List<Product> getCartProducts() {
         ArrayList<Product> cartProducts = new ArrayList<>();
         cartProducts.add(products.get(2L));
         cartProducts.add(products.get(5L));
         cartProducts.add(products.get(8L));
         cartProducts.add(products.get(3L));
         return cartProducts;
+    }
+
+    public List<Product> getFrontPageProducts() {
+        EntityManager em = getEntityManager();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Product> cq = cb.createQuery(Product.class);
+        Root<Product> from = cq.from(Product.class);
+        cq.where(
+                cb.equal(from.get("onFrontPage"), true)
+        );
+        return em.createQuery(cq).getResultList();
     }
 
     public static EntityManager getEntityManager() {

@@ -1,14 +1,9 @@
-package barker.ch.services;
+package barker.ch.products;
 
-
-import barker.ch.dao.ProductDao;
-import barker.ch.models.Product;
-import barker.ch.models.ShoppingCart;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -34,13 +29,10 @@ public class ProductService {
         return productDao.getAll();
     }
 
-    // TODO: change this
-    public ArrayList<Product> getFrontpageProducts() {
-        ArrayList<Product> products = new ArrayList<>();
-        products.add(productDao.findById(1L));
-        products.add(productDao.findById(2L));
-        products.add(productDao.findById(3L));
-        return products;
+    public List<Product> getFrontpageProducts() {
+        List<Product> list = productDao.getFrontPageProducts();
+        System.out.println(list);
+        return list;
     }
 
     public int getCartSize(HttpServletRequest req) {
@@ -56,6 +48,12 @@ public class ProductService {
             req.getSession().setAttribute("shoppingCart", new ShoppingCart());
         }
         return (ShoppingCart)req.getSession().getAttribute("shoppingCart");
+    }
+
+    public double getTotalCost(HttpServletRequest req) {
+        if (req.getSession().getAttribute("shoppingCart") == null) return 0;
+        return getShoppingCart(req).getTotalCost();
+
     }
 
     public void emptyCart(HttpServletRequest req) {

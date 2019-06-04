@@ -4,7 +4,7 @@
 
     <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
 
-        <class>barker.ch.models.Product</class>
+        <class>barker.ch.products.Product</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbc.JDBCDriver" />
