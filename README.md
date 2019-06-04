@@ -1,1 +1,4 @@
-# JavaEE Project (HEG 635-1)
+# A simple MVC example with Servlets, JSP and JPA
+```
+mvn clean package tomee:run
+```
