@@ -1,4 +1,6 @@
-# A simple MVC example with Servlets, JSP and JPA
+# A simple project example with Servlets, JSP and JPA
 ```
-mvn clean package tomee:run
+git clone https://github.com/jckbrkr/heg-javaee-project.git
+cd heg-javaee-project
+mvn package tomee:run
 ```
