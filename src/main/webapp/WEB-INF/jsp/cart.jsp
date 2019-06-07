@@ -39,7 +39,7 @@
                     <tr>
                         <td>${shoppingCartItem.key.id}</td>
                         <td>${shoppingCartItem.key.name}</td>
-                        <td>${shoppingCartItem.key.price}</td>
+                        <td>${shoppingCartItem.key.price} CHF</td>
                         <td>
                             ${shoppingCartItem.value}
                             <form action="${pageContext.request.contextPath}/substractItem" method="post" class="button-form">
@@ -55,12 +55,12 @@
                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                             </form>
                         </td>
-                        <td>${shoppingCartItem.key.price * shoppingCartItem.value}</td>
+                        <td>${shoppingCartItem.key.price * shoppingCartItem.value} CHF</td>
                     </tr>
                     </c:forEach>
                 </tbody>
             </table>
-            <p>Your total: ${totalCost}</p>
+            <p>Your total: ${totalCost} CHF</p>
             <br>
             <form action="${pageContext.request.contextPath}/checkout" method="post" class="button-form">
                 <button type="submit" class="btn btn-success">Pay</button>

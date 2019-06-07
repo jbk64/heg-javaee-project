@@ -21,7 +21,7 @@
         <div class="col-12 col-md-6">
             <h2>${product.name}</h2>
             <p>${product.description}</p>
-            <p>${product.price}</p>
+            <p>${product.price} CHF</p>
             <form action="${pageContext.request.contextPath}/addItem" method="post">
                 <input type="hidden" name="productId" value="${product.id}" />
                 <button type="submit" class="btn btn-success">${product.price} CHF <i class="fas fa-shopping-cart"></i></button>
